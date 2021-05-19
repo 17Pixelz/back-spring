@@ -10,8 +10,12 @@ public class Client implements Serializable {
     private Long        id;
     private String      nom;
     private String      prenom;
+
+    @Column(unique = true)
     private String      email;
     private String      tele;
+
+    @Column(unique = true)
     private String      login;
     private String      password;
 
@@ -22,9 +26,10 @@ public class Client implements Serializable {
     @OneToOne(mappedBy = "client")
     private Compte compte;
 
+
     public Client() {}
 
-    public Client(Long id, String nom, String prenom, String email, String tele, String login, String password, Agence id_agence) {
+    public Client(Long id, String nom, String prenom, String email, String tele, String login, String password, Agence agence) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -32,7 +37,7 @@ public class Client implements Serializable {
         this.tele = tele;
         this.login = login;
         this.password = password;
-        this.agence = id_agence;
+        this.agence = agence;
     }
 
     public void setId(Long id) {
@@ -63,8 +68,8 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public void setId_agence(Agence id_agence) {
-        this.agence = id_agence;
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 
     public Long getId() {
@@ -95,7 +100,7 @@ public class Client implements Serializable {
         return password;
     }
 
-    public Agence getId_agence() {
+    public Agence getAgence() {
         return agence;
     }
 }

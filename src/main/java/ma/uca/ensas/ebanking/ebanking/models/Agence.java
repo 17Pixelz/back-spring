@@ -12,8 +12,8 @@ public class Agence implements Serializable {
 
     @Id
     private Long    id;
-    private Long    nom;
-    private Long    Adresse;
+    private String    nom;
+    private String    Adresse;
 
     @OneToMany(mappedBy = "agence")
     private List<Client>    clients;
@@ -24,7 +24,7 @@ public class Agence implements Serializable {
 
     public Agence() { }
 
-    public Agence(Long id, Long nom, Long adresse) {
+    public Agence(Long id, String nom, String adresse) {
         this.id = id;
         this.nom = nom;
         Adresse = adresse;
@@ -34,11 +34,11 @@ public class Agence implements Serializable {
         this.id = id;
     }
 
-    public void setNom(Long nom) {
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public void setAdresse(Long adresse) {
+    public void setAdresse(String adresse) {
         Adresse = adresse;
     }
 
@@ -47,11 +47,11 @@ public class Agence implements Serializable {
         return id;
     }
 
-    public Long getNom() {
+    public String getNom() {
         return nom;
     }
 
-    public Long getAdresse() {
+    public String getAdresse() {
         return Adresse;
     }
 
