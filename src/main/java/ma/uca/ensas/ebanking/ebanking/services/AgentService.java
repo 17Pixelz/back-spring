@@ -5,9 +5,11 @@ import ma.uca.ensas.ebanking.ebanking.exceptions.AgentNotFoundException;
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.models.Agent;
 import ma.uca.ensas.ebanking.ebanking.repositories.AgentRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AgentService {
     private final AgentRepo agentRepo;
     AgentService(AgentRepo repo){

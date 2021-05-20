@@ -7,9 +7,11 @@ import ma.uca.ensas.ebanking.ebanking.models.Siege;
 import ma.uca.ensas.ebanking.ebanking.repositories.AgenceRepo;
 import ma.uca.ensas.ebanking.ebanking.repositories.SiegeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SiegeService {
     private final SiegeRepo siegeRepo;
 
