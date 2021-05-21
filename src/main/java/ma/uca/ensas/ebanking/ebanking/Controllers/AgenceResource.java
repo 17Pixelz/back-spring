@@ -2,6 +2,7 @@ package ma.uca.ensas.ebanking.ebanking.Controllers;
 
 
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
+import ma.uca.ensas.ebanking.ebanking.models.Agent;
 import ma.uca.ensas.ebanking.ebanking.services.AgenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,16 @@ public class AgenceResource {
         return new ResponseEntity<>(agence1,HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Agence> updateAgence(@RequestBody Agence agence){
+        Agence agent1 = agenceService.updateAgence(agence);
+        return new ResponseEntity<>(agent1,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAgence(@PathVariable("id") Long id){
+        agenceService.deleteAgence(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

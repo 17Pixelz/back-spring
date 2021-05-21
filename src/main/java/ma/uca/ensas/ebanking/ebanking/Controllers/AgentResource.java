@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.Controllers;
 
 import ma.uca.ensas.ebanking.ebanking.models.Agent;
+import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.services.AgentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,17 @@ public class AgentResource {
     public ResponseEntity<Agent> addAgent(@RequestBody Agent agent){
         Agent agent1 = agentService.addAgent(agent);
         return new ResponseEntity<>(agent1,HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Agent> updateAgent(@RequestBody Agent agent){
+        Agent agent1 = agentService.updateAgent(agent);
+        return new ResponseEntity<>(agent1,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteAgent(@PathVariable("id") Long id){
+        agentService.deleteAgent(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -31,7 +31,7 @@ public class ClientResource {
         return new ResponseEntity<>(client,HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+@PostMapping("/add")        
     public ResponseEntity<Client> addClient(@RequestBody Client client){
         Client client1 = clientService.addClient(client);
         return new ResponseEntity<>(client1,HttpStatus.OK);
