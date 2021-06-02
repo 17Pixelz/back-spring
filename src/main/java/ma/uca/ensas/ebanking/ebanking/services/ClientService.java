@@ -5,6 +5,7 @@ import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.repositories.ClientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
