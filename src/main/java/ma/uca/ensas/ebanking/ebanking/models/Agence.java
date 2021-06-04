@@ -24,6 +24,12 @@ public class Agence implements Serializable {
 
     public Agence() { }
 
+    public Agence( String nom, String adresse) {
+
+        this.nom = nom;
+        Adresse = adresse;
+    }
+
     public Agence(Long id, String nom, String adresse) {
         this.id = id;
         this.nom = nom;
