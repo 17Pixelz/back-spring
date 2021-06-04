@@ -19,6 +19,13 @@ public class AgentResource {
         this.agentService = agentService;
     }
 
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Agent> getClientById (@PathVariable("id") Long id){
+        Agent agent = agentService.findAgentById(id);
+        return new ResponseEntity<>(agent,HttpStatus.OK);
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<Agent>> getAllAgents(){
         List<Agent> l = agentService.findAllAgents();

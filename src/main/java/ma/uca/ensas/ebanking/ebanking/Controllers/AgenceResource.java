@@ -3,6 +3,7 @@ package ma.uca.ensas.ebanking.ebanking.Controllers;
 
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.models.Agent;
+import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.services.AgenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,12 @@ public class AgenceResource {
 
     public AgenceResource(AgenceService agenceService) {
         this.agenceService = agenceService;
+    }
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Agence> getClientById (@PathVariable("id") Long id){
+        Agence agence = agenceService.findAgenceById(id);
+        return new ResponseEntity<>(agence,HttpStatus.OK);
     }
 
     @GetMapping("/all")

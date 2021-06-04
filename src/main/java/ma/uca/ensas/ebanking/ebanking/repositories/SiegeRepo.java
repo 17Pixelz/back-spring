@@ -1,6 +1,5 @@
 package ma.uca.ensas.ebanking.ebanking.repositories;
 
-import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.models.Siege;
 import org.springframework.data.jpa.repository.JpaRepository;
 

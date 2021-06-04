@@ -1,10 +1,8 @@
 package ma.uca.ensas.ebanking.ebanking.services;
 
-import ma.uca.ensas.ebanking.ebanking.exceptions.AgenceNotFoundException;
-import ma.uca.ensas.ebanking.ebanking.exceptions.SiegeNotFoundException;
-import ma.uca.ensas.ebanking.ebanking.models.Agence;
+
+import ma.uca.ensas.ebanking.ebanking.exceptions.NotFoundException;
 import ma.uca.ensas.ebanking.ebanking.models.Siege;
-import ma.uca.ensas.ebanking.ebanking.repositories.AgenceRepo;
 import ma.uca.ensas.ebanking.ebanking.repositories.SiegeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +31,7 @@ public class SiegeService {
     }
 
     public Siege findSiegeById(Long id){
-        return siegeRepo.findSiegeById(id).orElseThrow(()-> new SiegeNotFoundException("Siege " + id + " Not Found"));
+        return siegeRepo.findSiegeById(id).orElseThrow(()-> new NotFoundException("Siege " + id + " Not Found"));
     }
 
     public void deleteSiege(Long id){

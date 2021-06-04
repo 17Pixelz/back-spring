@@ -1,6 +1,6 @@
 package ma.uca.ensas.ebanking.ebanking.services;
 
-import ma.uca.ensas.ebanking.ebanking.exceptions.AgenceNotFoundException;
+import ma.uca.ensas.ebanking.ebanking.exceptions.NotFoundException;
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.repositories.AgenceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class AgenceService {
     }
 
     public Agence findAgenceById(Long id){
-        return agenceRepo.findAgenceById(id).orElseThrow(()-> new AgenceNotFoundException("Agence " + id + " Not Found"));
+        return agenceRepo.findAgenceById(id).orElseThrow(()-> new NotFoundException("Agence " + id + " Not Found"));
     }
 
     public void deleteAgence(Long id){
