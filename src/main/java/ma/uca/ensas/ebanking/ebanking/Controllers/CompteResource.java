@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.Controllers;
 
 import ma.uca.ensas.ebanking.ebanking.models.Compte;
+import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.services.CompteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +49,17 @@ public class CompteResource {
     public ResponseEntity<?> deleteCompte(@PathVariable("id") Long id){
         compteService.deleteCompteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/find/virement/recu/{id}")
+    public ResponseEntity<List<Virement>> getVirementsRecus (@PathVariable("id") Long id){
+        List<Virement> virRecus = compteService.findVirementsRecus(id);
+        return new ResponseEntity<>(virRecus,HttpStatus.OK);
+    }
+
+    @GetMapping("/find/virement/envoye/{id}")
+    public ResponseEntity<List<Virement>> getVirementsEnvoyés (@PathVariable("id") Long id){
+        List<Virement> virEnv = compteService.findVirementsEnvoyés(id);
+        return new ResponseEntity<>(virEnv,HttpStatus.OK);
     }
 }

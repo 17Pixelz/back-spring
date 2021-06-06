@@ -5,10 +5,12 @@ import ma.uca.ensas.ebanking.ebanking.models.Compte;
 import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.repositories.CompteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CompteService {
     private final CompteRepo compteRepo;
 
@@ -36,5 +38,16 @@ public class CompteService {
 
     public void deleteCompteById(Long id){
         compteRepo.deleteCompteById(id);
+    }
+    public List<Virement> findVirementsRecus(Long id){
+        Compte compte = compteRepo.findCompteById(id)
+                .orElseThrow(() -> new NotFoundException("Account with " + id + " does not exist :("));
+        return compte.getVirements_recus();
+    }
+
+    public List<Virement> findVirementsEnvoyés(Long id){
+        Compte compte = compteRepo.findCompteById(id)
+                .orElseThrow(() -> new NotFoundException("Account with " + id + " does not exist :("));
+        return compte.getVirements_envoyé();
     }
 }

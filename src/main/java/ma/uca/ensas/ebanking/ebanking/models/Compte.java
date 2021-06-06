@@ -25,9 +25,27 @@ public class Compte implements Serializable {
     @JoinColumn(name = "id_agent")
     private Agent       agent;
 
-    @OneToMany(mappedBy="compte", cascade = CascadeType.ALL)
-    private List<Virement> virements;
+    @OneToMany(mappedBy="compte_deb", cascade = CascadeType.ALL)
+    private List<Virement> virements_envoyé;
 
+    @OneToMany(mappedBy="compte_cred", cascade = CascadeType.ALL)
+    private List<Virement> virements_recus;
+
+    public List<Virement> getVirements_envoyé() {
+        return virements_envoyé;
+    }
+
+    public void setVirements_envoyé(List<Virement> virements_envoyé) {
+        this.virements_envoyé = virements_envoyé;
+    }
+
+    public List<Virement> getVirements_recus() {
+        return virements_recus;
+    }
+
+    public void setVirements_recus(List<Virement> virements_recus) {
+        this.virements_recus = virements_recus;
+    }
 
     public Compte() {}
 

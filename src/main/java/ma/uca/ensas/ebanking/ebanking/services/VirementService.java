@@ -4,12 +4,14 @@ import ma.uca.ensas.ebanking.ebanking.exceptions.NotFoundException;
 import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.repositories.VirementRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+@Service
 public class VirementService {
     private final VirementRepo virementRepo;
 
@@ -35,10 +37,7 @@ public class VirementService {
                 .orElseThrow(() -> new NotFoundException("Virement with " + id + " does not exist :("));
     }
 
-    public List<Virement> findVirementByAccId(Long id){
-        return virementRepo.findVirementByCompteId(id)
-                .orElseThrow(() -> new NotFoundException("Client with " + id + " Has no virements :("));
-    }
+
 
     public void deleteVirementById(Long id){
         virementRepo.deleteVirementById(id);
