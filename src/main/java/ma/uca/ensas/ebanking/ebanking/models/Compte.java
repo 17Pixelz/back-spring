@@ -1,11 +1,9 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Compte implements Serializable {
@@ -25,72 +23,95 @@ public class Compte implements Serializable {
     @JoinColumn(name = "id_agent")
     private Agent       agent;
 
+    @OneToMany(mappedBy="compte_deb", cascade = CascadeType.ALL)
+    private List<Virement> virements_envoyé;
+
+    @OneToMany(mappedBy="compte_cred", cascade = CascadeType.ALL)
+    private List<Virement> virements_recus;
+
+    public List<Virement> getVirements_envoyé() {
+        return virements_envoyé;
+    }
+
+    public void setVirements_envoyé(List<Virement> virements_envoyé) {
+        this.virements_envoyé = virements_envoyé;
+    }
+
+    public List<Virement> getVirements_recus() {
+        return virements_recus;
+    }
+
+    public void setVirements_recus(List<Virement> virements_recus) {
+        this.virements_recus = virements_recus;
+    }
 
     public Compte() {}
 
-    public Compte(Long id, String type, String etat, Date creation, Float solde, Client id_client, Agent id_agent) {
+    public Compte(Long id, String type, String etat, Date creation, Float solde, Client client, Agent agent) {
         this.id = id;
         this.type = type;
         this.etat = etat;
         this.creation = creation;
         this.solde = solde;
-        this.client = id_client;
-        this.agent = id_agent;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setEtat(String etat) {
-        this.etat = etat;
-    }
-
-    public void setCreation(Date creation) {
-        this.creation = creation;
-    }
-
-    public void setSolde(Float solde) {
-        this.solde = solde;
-    }
-
-    public void setId_client(Client id_client) {
-        this.client = id_client;
-    }
-
-    public void setId_agent(Agent id_agent) {
-        this.agent = id_agent;
+        this.client = client;
+        this.agent = agent;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getEtat() {
         return etat;
     }
 
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     public Date getCreation() {
         return creation;
+    }
+
+    public void setCreation(Date creation) {
+        this.creation = creation;
     }
 
     public Float getSolde() {
         return solde;
     }
 
-    public Client getId_client() {
+    public void setSolde(Float solde) {
+        this.solde = solde;
+    }
+
+    public Client getClient() {
         return client;
     }
 
-    public Agent getId_agent() {
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Agent getAgent() {
         return agent;
     }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+
 }

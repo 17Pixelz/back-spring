@@ -16,7 +16,7 @@ public class Agent implements Serializable {
     private String      password;
 
     @ManyToOne
-    @JoinColumn(name = "agence")
+    @JoinColumn(name = "id_agence")
     private Agence        agence;
 
     @OneToOne(mappedBy = "agent")

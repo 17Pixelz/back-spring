@@ -1,8 +1,6 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,20 +16,29 @@ public class Virement implements Serializable {
     @Column(nullable=false)
     private Float       montant;
 
-    @Column(nullable=false)
-    private Long        id_deb;
+    @ManyToOne
+    @JoinColumn(name = "id_compte_deb")
+    private Compte      compte_deb;
 
-    @Column(nullable=false)
-    private Long        id_cre;
+    @ManyToOne
+    @JoinColumn(name = "id_compte_cred",referencedColumnName = "id")
+    private Compte compte_cred;
+
+    @ManyToOne
+    @JoinColumn(name = "id_agent")
+    private Agent agent;
+
+
+
 
     public Virement() { }
 
-    public Virement(Long id, Date virement, Float montant, Long id_deb, Long id_cre) {
+    public Virement(Long id, Date virement, Float montant, Compte id_deb, Compte id_cre) {
         this.id = id;
         this.virement = virement;
         this.montant = montant;
-        this.id_deb = id_deb;
-        this.id_cre = id_cre;
+        this.compte_deb = id_deb;
+        this.compte_cred = id_cre;
     }
 
     public void setId(Long id) {
@@ -46,12 +53,20 @@ public class Virement implements Serializable {
         this.montant = montant;
     }
 
-    public void setId_deb(Long id_deb) {
-        this.id_deb = id_deb;
+    public void setCompte_deb(Compte compte_deb) {
+        this.compte_deb = compte_deb;
     }
 
-    public void setId_cre(Long id_cre) {
-        this.id_cre = id_cre;
+    public void setCompte_cred(Compte compte_cred) {
+        this.compte_cred = compte_cred;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
     public Long getId() {
@@ -66,11 +81,15 @@ public class Virement implements Serializable {
         return montant;
     }
 
-    public Long getId_deb() {
-        return id_deb;
+    public Compte getCompte_deb() {
+        return compte_deb;
     }
 
-    public Long getId_cre() {
-        return id_cre;
+    public Compte getCompte_cred() {
+        return compte_cred;
     }
+
+
+
+
 }
