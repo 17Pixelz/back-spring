@@ -27,10 +27,7 @@ public class Virement implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_agent")
     private Agent agent;
-
-
-
-
+    
     public Virement() { }
 
     public Virement(Long id, Date virement, Float montant, Compte id_deb, Compte id_cre) {
