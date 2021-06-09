@@ -15,8 +15,6 @@ public class Compte implements Serializable {
     private Date        creation;
     private Float       solde;
 
-
-
     @OneToOne
     @JoinColumn(name = "id_client")
     private Client       client;
