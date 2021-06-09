@@ -17,7 +17,7 @@ public class Agent implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_agence")
-    private Agence        agence;
+    private Agence  agence;
 
     @OneToOne(mappedBy = "agent")
     private Compte compte;

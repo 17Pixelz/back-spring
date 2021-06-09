@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking;
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.repositories.AgenceRepo;
+import ma.uca.ensas.ebanking.ebanking.repositories.ClientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,11 +16,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 @SpringBootApplication
-public class EbankingApplication implements
-		ApplicationRunner {
-    @Autowired
-	AgenceRepo ag;
-
+public class EbankingApplication implements ApplicationRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(EbankingApplication.class, args);
 	}

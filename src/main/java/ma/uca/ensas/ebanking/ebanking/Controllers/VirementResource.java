@@ -1,5 +1,6 @@
 package ma.uca.ensas.ebanking.ebanking.Controllers;
 
+import ma.uca.ensas.ebanking.ebanking.exceptions.SoldeInsuffisant;
 import ma.uca.ensas.ebanking.ebanking.models.Compte;
 import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.services.CompteService;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.NotActiveException;
 import java.util.List;
 
 @RestController
@@ -34,8 +36,13 @@ public class VirementResource {
 
     @PostMapping("/add")
     public ResponseEntity<Virement> addVirement(@RequestBody Virement virement){
-        Virement virement1 = virementService.addVirement(virement);
-        return new ResponseEntity<>(virement1,HttpStatus.OK);
+        if(virement.getCompte_deb().getSolde() >= virement.getMontant()) {
+            Virement virement1 = virementService.addVirement(virement);
+            return new ResponseEntity<>(virement1, HttpStatus.OK);
+        }
+        else{
+            throw new SoldeInsuffisant("Votre solde est insuffisent");
+        }
     }
 
     @PutMapping("/update")

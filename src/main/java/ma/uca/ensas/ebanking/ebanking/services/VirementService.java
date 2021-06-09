@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.services;
 
 import ma.uca.ensas.ebanking.ebanking.exceptions.NotFoundException;
+import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.repositories.VirementRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,8 @@ public class VirementService {
         return virementRepo.findVirementById(id)
                 .orElseThrow(() -> new NotFoundException("Virement with " + id + " does not exist :("));
     }
-
-
-
     public void deleteVirementById(Long id){
         virementRepo.deleteVirementById(id);
     }
 }
+
