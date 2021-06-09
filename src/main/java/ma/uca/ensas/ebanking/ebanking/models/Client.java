@@ -1,5 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -19,6 +21,7 @@ public class Client implements Serializable {
     private String      login;
     private String      password;
 
+    @Nullable
     @ManyToOne
     @JoinColumn(name = "id_agence")
     private Agence agence;
