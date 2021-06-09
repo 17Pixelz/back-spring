@@ -7,24 +7,23 @@ import java.io.Serializable;
 
 @Entity
 public class Client implements Serializable {
-
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Id
     private Long        id;
     private String      nom;
     private String      prenom;
+    private String      tele;
 
     @Column(unique = true)
     private String      email;
-    private String      tele;
 
     @Column(unique = true)
     private String      login;
     private String      password;
-
     @Nullable
     @ManyToOne
     @JoinColumn(name = "id_agence")
-    private Agence agence;
+    public Agence agence;
 
     @OneToOne(mappedBy = "client")
     private Compte compte;
@@ -32,15 +31,14 @@ public class Client implements Serializable {
 
     public Client() {}
 
-    public Client(Long id, String nom, String prenom, String email, String tele, String login, String password, Agence agence) {
-        this.id = id;
+    public Client(String nom, String prenom, String email, String tele, String login, String password ) {
+       // this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.tele = tele;
         this.login = login;
         this.password = password;
-        this.agence = agence;
     }
 
     public void setId(Long id) {
@@ -105,5 +103,20 @@ public class Client implements Serializable {
 
     public Agence getAgence() {
         return agence;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", tele='" + tele + '\'' +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", agence=" + agence +
+                ", compte=" + compte +
+                '}';
     }
 }
