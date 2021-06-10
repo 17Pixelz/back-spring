@@ -1,11 +1,16 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Client.class)
 public class Client implements Serializable {
 
     @Id
@@ -20,6 +25,7 @@ public class Client implements Serializable {
     @Column(unique = true)
     private String      login;
     private String      password;
+
 
     @Nullable
     @ManyToOne

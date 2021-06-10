@@ -16,7 +16,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 @SpringBootApplication
-public class EbankingApplication implements ApplicationRunner {
+public class EbankingApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(EbankingApplication.class, args);
 	}
@@ -37,9 +37,4 @@ public class EbankingApplication implements ApplicationRunner {
 
 
 }
-
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-
-	}
 }

@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.services;
 
 import ma.uca.ensas.ebanking.ebanking.exceptions.NotFoundException;
+import ma.uca.ensas.ebanking.ebanking.exceptions.SoldeInsuffisant;
 import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.models.Virement;
 import ma.uca.ensas.ebanking.ebanking.repositories.VirementRepo;
@@ -22,7 +23,15 @@ public class VirementService {
     }
 
     public Virement addVirement(Virement virement ){
-        return virementRepo.save(virement);
+        if(virement.getCompte_deb().getSolde() >= virement.getMontant()) {
+            Float solde = virement.getCompte_deb().getSolde();
+            Float montant = virement.getMontant();
+            virement.getCompte_deb().setSolde(solde - montant);
+            return virementRepo.save(virement);
+        }
+        else{
+            throw new SoldeInsuffisant("Le solde du crediteur est insuffisent");
+        }
     }
 
     public List<Virement> findAllVirements(){

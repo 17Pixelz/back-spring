@@ -1,14 +1,14 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.*;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Agence.class)
 public class Agence implements Serializable {
 
     @Id
@@ -16,7 +16,8 @@ public class Agence implements Serializable {
     private String    nom;
     private String    Adresse;
 
-    @OneToMany(mappedBy = "agence")
+
+    @OneToMany(fetch = FetchType.EAGER ,mappedBy = "agence")
     private List<Client>    clients;
 
 

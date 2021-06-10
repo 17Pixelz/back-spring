@@ -36,13 +36,9 @@ public class VirementResource {
 
     @PostMapping("/add")
     public ResponseEntity<Virement> addVirement(@RequestBody Virement virement){
-        if(virement.getCompte_deb().getSolde() >= virement.getMontant()) {
+
             Virement virement1 = virementService.addVirement(virement);
             return new ResponseEntity<>(virement1, HttpStatus.OK);
-        }
-        else{
-            throw new SoldeInsuffisant("Votre solde est insuffisent");
-        }
     }
 
     @PutMapping("/update")
@@ -51,7 +47,7 @@ public class VirementResource {
         return new ResponseEntity<>(virement1,HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @RequestMapping(value = "/delete/{id}",method = {RequestMethod.DELETE,RequestMethod.GET})
     public ResponseEntity<?> deleteVirement(@PathVariable("id") Long id){
         virementService.deleteVirementById(id);
         return new ResponseEntity<>(HttpStatus.OK);
