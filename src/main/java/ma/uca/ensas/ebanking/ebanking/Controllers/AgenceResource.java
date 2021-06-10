@@ -23,9 +23,9 @@ public class AgenceResource {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Agence> getClientById (@PathVariable("id") Long id){
+    public Agence getAgenceById (@PathVariable("id") Long id){
         Agence agence = agenceService.findAgenceById(id);
-        return new ResponseEntity<>(agence,HttpStatus.OK);
+        return agence;
     }
 
     @GetMapping("/all")

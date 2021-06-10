@@ -79,4 +79,12 @@ public class Agence implements Serializable {
         return Adresse;
     }
 
+    @Override
+    public String toString() {
+        return "Agence{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", Adresse='" + Adresse + '\'' +
+                '}';
+    }
 }
