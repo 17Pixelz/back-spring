@@ -32,7 +32,7 @@ public class Client implements Serializable {
     @JoinColumn(name = "id_agence")
     private Agence agence;
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne
     private Compte compte;
 
 

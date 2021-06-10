@@ -12,14 +12,15 @@ import java.util.List;
 public class Agence implements Serializable {
 
     @Id
+    @GeneratedValue
     private Long    id;
     private String    nom;
     private String    Adresse;
 
 
+
     @OneToMany(fetch = FetchType.EAGER ,mappedBy = "agence")
     private List<Client>    clients;
-
 
     @OneToMany(mappedBy = "agence")
     private List<Agent> agents;

@@ -13,19 +13,22 @@ import java.util.List;
 public class Compte implements Serializable {
 
     @Id
+    @GeneratedValue
     private Long        id;
     private String      type;
     private String      etat;
     private Date        creation;
     private Float       solde;
 
-    @OneToOne
+    @OneToOne(mappedBy = "compte")
     @JoinColumn(name = "id_client")
     private Client       client;
 
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "id_agent")
     private Agent       agent;
+
 
     @OneToMany(mappedBy="compte_deb", cascade = CascadeType.ALL)
     private List<Virement> virements_envoyé;

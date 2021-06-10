@@ -1,4 +1,5 @@
 package ma.uca.ensas.ebanking.ebanking;
+
 import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.repositories.AgenceRepo;
 import ma.uca.ensas.ebanking.ebanking.repositories.ClientRepo;
@@ -8,6 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -34,7 +38,5 @@ public class EbankingApplication{
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
-
-
-}
+	}
 }

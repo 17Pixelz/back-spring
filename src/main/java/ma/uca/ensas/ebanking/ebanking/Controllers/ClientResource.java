@@ -37,7 +37,7 @@ public class ClientResource {
     @PostMapping("/add/{id_agence}")
     public ResponseEntity<Client> addClient(@RequestBody Client client,@PathVariable("id_agence") Long id_agence){
         Agence ag=AgenceService.getAgenceById(id_agence);
-        client.agence=ag;
+        client.setAgence(ag);
         Client client1 = clientService.addClient(client);
         return new ResponseEntity<>(client1,HttpStatus.OK);
     }

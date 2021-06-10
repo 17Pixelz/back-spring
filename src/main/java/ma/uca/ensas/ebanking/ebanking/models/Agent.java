@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Agent.class)
@@ -23,8 +24,8 @@ public class Agent implements Serializable {
     @JoinColumn(name = "id_agence")
     private Agence  agence;
 
-    @OneToOne(mappedBy = "agent")
-    private Compte compte;
+    @OneToMany(mappedBy = "agent")
+    private List<Compte> comptes;
 
     public Agent() {}
 

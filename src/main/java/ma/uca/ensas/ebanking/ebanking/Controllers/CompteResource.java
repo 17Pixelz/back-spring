@@ -11,9 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/compte")
-
-
-
 public class CompteResource {
     private final CompteService compteService;
 

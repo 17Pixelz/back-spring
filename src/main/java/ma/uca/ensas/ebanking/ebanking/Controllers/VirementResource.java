@@ -36,7 +36,6 @@ public class VirementResource {
 
     @PostMapping("/add")
     public ResponseEntity<Virement> addVirement(@RequestBody Virement virement){
-
             Virement virement1 = virementService.addVirement(virement);
             return new ResponseEntity<>(virement1, HttpStatus.OK);
     }
