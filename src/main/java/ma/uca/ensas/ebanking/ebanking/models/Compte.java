@@ -22,7 +22,7 @@ public class Compte implements Serializable {
     @JoinColumn(name = "id_client")
     private Client       client;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_agent")
     @JsonManagedReference
     private Agent       agent;
