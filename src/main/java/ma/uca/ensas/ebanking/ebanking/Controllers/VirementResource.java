@@ -40,6 +40,7 @@ public class VirementResource {
 
     @PutMapping("/update")
     public ResponseEntity<Virement> updateVirement(@RequestBody Virement virement){
+
         Virement virement1 = virementService.updateVirement(virement);
         return new ResponseEntity<>(virement1,HttpStatus.OK);
     }

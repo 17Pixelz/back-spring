@@ -31,7 +31,7 @@ public class CompteService {
         return compteRepo.save(compte);
     }
 
-    public Compte findCompteById(Long id){
+    public Compte findCompteById(String id){
         return compteRepo.findCompteById(id)
                 .orElseThrow(() -> new NotFoundException("Account with " + id + " does not exist :("));
     }
@@ -39,13 +39,13 @@ public class CompteService {
     public void deleteCompteById(Long id){
         compteRepo.deleteCompteById(id);
     }
-    public List<Virement> findVirementsRecus(Long id){
+    public List<Virement> findVirementsRecus(String id){
         Compte compte = compteRepo.findCompteById(id)
                 .orElseThrow(() -> new NotFoundException("Account with " + id + " does not exist :("));
         return compte.getVirements_recus();
     }
 
-    public List<Virement> findVirementsEnvoyés(Long id){
+    public List<Virement> findVirementsEnvoyés(String id){
         Compte compte = compteRepo.findCompteById(id)
                 .orElseThrow(() -> new NotFoundException("Account with " + id + " does not exist :("));
         return compte.getVirements_envoyé();

@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface CompteRepo extends JpaRepository<Compte,Long> {
     void deleteCompteById(Long id);
 
-    Optional<Compte> findCompteById(Long id);
+    Optional<Compte> findCompteById(String id);
 }
