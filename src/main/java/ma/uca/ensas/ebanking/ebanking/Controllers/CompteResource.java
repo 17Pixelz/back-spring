@@ -13,9 +13,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/compte")
-
-
-
 public class CompteResource {
     private final CompteService compteService;
     private final ClientService clientService;

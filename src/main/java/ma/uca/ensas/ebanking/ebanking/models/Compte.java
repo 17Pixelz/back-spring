@@ -9,7 +9,7 @@ import java.util.List;
 public class Compte implements Serializable {
 
     @Id
-    private String        id;
+    private Long        id;
     private String      type;
     private String      etat;
     private Date        creation;
@@ -47,20 +47,21 @@ public class Compte implements Serializable {
 
     public Compte() {}
 
-    public Compte(String id, String type, String etat, Date creation, Float solde) {
+    public Compte(Long id, String type, String etat, Date creation, Float solde, Client client, Agent agent) {
         this.id = id;
         this.type = type;
         this.etat = etat;
         this.creation = creation;
         this.solde = solde;
-
+        this.client = client;
+        this.agent = agent;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

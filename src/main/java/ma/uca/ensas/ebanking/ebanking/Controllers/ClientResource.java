@@ -5,6 +5,7 @@ import ma.uca.ensas.ebanking.ebanking.models.Agence;
 import ma.uca.ensas.ebanking.ebanking.models.Client;
 import ma.uca.ensas.ebanking.ebanking.services.ClientService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class ClientResource {
         this.AgenceService=AgenceService;
     }
 
-    @GetMapping("/all")
+    @GetMapping(value = "/all")
     public ResponseEntity<List<Client>> getAllClients(){
         List<Client> l = clientService.findAllClients();
         return new ResponseEntity<>(l, HttpStatus.OK);
@@ -37,7 +38,7 @@ public class ClientResource {
     @PostMapping("/add/{id_agence}")
     public ResponseEntity<Client> addClient(@RequestBody Client client,@PathVariable("id_agence") Long id_agence){
         Agence ag=AgenceService.getAgenceById(id_agence);
-        client.agence=ag;
+        client.setAgence(ag);
         Client client1 = clientService.addClient(client);
         return new ResponseEntity<>(client1,HttpStatus.OK);
     }

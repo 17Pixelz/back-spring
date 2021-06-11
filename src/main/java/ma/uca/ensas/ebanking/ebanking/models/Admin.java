@@ -1,5 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.apache.catalina.authenticator.SavedRequest;
 
 import javax.persistence.Column;
@@ -9,6 +11,7 @@ import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Admin.class)
 public class Admin implements Serializable {
 
     @Id
