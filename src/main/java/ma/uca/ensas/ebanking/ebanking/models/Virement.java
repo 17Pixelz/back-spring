@@ -1,6 +1,7 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import ma.uca.ensas.ebanking.ebanking.repositories.CompteRepo;
 import ma.uca.ensas.ebanking.ebanking.services.CompteService;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Virement.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Virement.class)
 public class Virement implements Serializable {
 
     @Id
@@ -25,14 +26,17 @@ public class Virement implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_compte_deb")
+    @JsonManagedReference
     private Compte      compte_deb;
 
     @ManyToOne
     @JoinColumn(name = "id_compte_cred",referencedColumnName = "id")
+    @JsonManagedReference
     private Compte compte_cred;
 
     @ManyToOne
     @JoinColumn(name = "id_agent")
+    @JsonManagedReference
     private Agent agent;
     
     public Virement() { }

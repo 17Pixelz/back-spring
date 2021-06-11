@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Agence.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Agence.class)
 public class Agence implements Serializable {
 
     @Id
@@ -20,9 +20,11 @@ public class Agence implements Serializable {
 
 
     @OneToMany(fetch = FetchType.EAGER ,mappedBy = "agence")
+    @JsonBackReference
     private List<Client>    clients;
 
     @OneToMany(mappedBy = "agence")
+    @JsonBackReference
     private List<Agent> agents;
 
     public Agence() { }

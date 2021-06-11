@@ -10,11 +10,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Client.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Client.class)
 public class Client implements Serializable {
 
     @Id
-    private String        id;
+    private Long        id;
     private String      nom;
     private String      prenom;
 
@@ -30,15 +30,17 @@ public class Client implements Serializable {
     @Nullable
     @ManyToOne
     @JoinColumn(name = "id_agence")
+    @JsonManagedReference
     private Agence agence;
 
     @OneToOne
+    @JsonManagedReference
     private Compte compte;
 
 
     public Client() {}
 
-    public Client(String id, String nom, String prenom, String email, String tele, String login, String password) {
+    public Client(Long id, String nom, String prenom, String email, String tele, String login, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -49,7 +51,7 @@ public class Client implements Serializable {
 
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -81,7 +83,7 @@ public class Client implements Serializable {
         this.agence = agence;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

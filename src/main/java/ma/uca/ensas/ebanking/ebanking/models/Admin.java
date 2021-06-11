@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Admin.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id",scope = Admin.class)
 public class Admin implements Serializable {
 
     @Id

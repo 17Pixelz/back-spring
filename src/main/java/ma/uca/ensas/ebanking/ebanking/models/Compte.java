@@ -1,5 +1,8 @@
 package ma.uca.ensas.ebanking.ebanking.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,12 +24,15 @@ public class Compte implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "id_agent")
+    @JsonManagedReference
     private Agent       agent;
 
     @OneToMany(mappedBy="compte_deb", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Virement> virements_envoyé;
 
     @OneToMany(mappedBy="compte_cred", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Virement> virements_recus;
 
     public List<Virement> getVirements_envoyé() {
