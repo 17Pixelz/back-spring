@@ -9,6 +9,5 @@ import java.util.Optional;
 @CrossOrigin("*")
 public interface ClientRepo extends JpaRepository<Client, Long> {
     void deleteClientById(Long id);
-
     Optional<Client> findClientById(Long id);
 }

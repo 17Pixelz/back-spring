@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Client implements Serializable {
 
     @Id
-    private Long        id;
+    private String        id;
     private String      nom;
     private String      prenom;
 
@@ -38,7 +38,7 @@ public class Client implements Serializable {
 
     public Client() {}
 
-    public Client(Long id, String nom, String prenom, String email, String tele, String login, String password, Agence agence) {
+    public Client(String id, String nom, String prenom, String email, String tele, String login, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -46,10 +46,10 @@ public class Client implements Serializable {
         this.tele = tele;
         this.login = login;
         this.password = password;
-        this.agence = agence;
+
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -81,7 +81,7 @@ public class Client implements Serializable {
         this.agence = agence;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
